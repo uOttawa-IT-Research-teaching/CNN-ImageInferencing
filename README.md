@@ -19,4 +19,5 @@ Copy token and take note of port which is usually 88XX
 
 ## On user's computer, open a terminal and type:
 ssh -N -L port:node_name:port user_name@server-name
+
 run browser with http://localhost
