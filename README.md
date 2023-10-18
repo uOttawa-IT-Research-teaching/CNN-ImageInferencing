@@ -4,6 +4,7 @@ Apptainer is available as a module on all Alliance clusters.
 Please send an e-mail to pdarveau@uottawa.ca to request the container SIF file.
 
 # Instructions for running container on Alliance cluster:
+The container can only run from the scratch or project folders
 ## On the Alliance cluster:
 module load apptainer/1.1.8​
 
