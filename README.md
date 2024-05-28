@@ -1,4 +1,4 @@
-# Inferencing
+# Deep Leaning with CNN Inferencing on CPU and GPU
 The notebooks have been developed to work in an Apptainer (Formerly Singularity) environment.
 Apptainer is available as a module on all Alliance clusters.
 Please send an e-mail to pdarveau@uottawa.ca to request the container SIF file.
