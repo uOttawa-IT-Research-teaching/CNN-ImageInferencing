@@ -6,7 +6,7 @@ Please send an e-mail to pdarveau@uottawa.ca to request the container SIF file.
 Information about Apptainer is located on the Alliance website: [Apptainer](https://docs.alliancecan.ca/wiki/Apptainer).
 
 # Instructions for running container on Alliance cluster:
-Using a container from the scratch or project folders on an Alliance cluster works best as it avoids all the environment set up that comes with setting up new software.  You can choose to run your container on a CPU or GPU.  The container .SIF file needs to be built on a system where you have root access so we recommend installing Apptainer on your local PC and upload the .SIF file to the cluster.  Below is an example of how to run the image file and access the jupyter environment.
+Using a container from the scratch or project folders on an Alliance cluster works best as it avoids all the environment set up that comes with setting up new software.  You can choose to run your container on a CPU or GPU.  The container .SIF file needs to be built on a system where you have root access so we recommend installing Apptainer on your local PC and upload the .SIF file to an Alliance cluster with internet access. An example of a .def file (oneAPI.def) for building the contrainer is provided in this repo.  Below is an example of how to run the image file and access the jupyter environment.
 
 ## On the Alliance cluster:
 module load apptainer/1.1.8​​
