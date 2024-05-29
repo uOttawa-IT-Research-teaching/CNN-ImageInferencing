@@ -1,0 +1,67 @@
+Bootstrap: library
+From: ubuntu:20.04
+
+%help
+   This container encapsulates the oneAPI openVINO framework in a Ubuntu 20.04 container for use on
+   Alliance clusters.
+
+           To run the container:
+
+It will listen on localhost:8888 by default. If you would like to run it on another port (e.g. 9000) instead you can do so by:
+
+singularity run oneapi_jup.sif --port=9000
+This will run Jupyter Notebook on localhost:9000.
+
+And if you would like to set another hostname use ––ip when running the image:
+
+singularity run oneapi_jup.sif --ip=1.1.1.1 --port=9000
+This will run Jupyter Notebook on 1.1.1.1:9000
+
+%environment
+  JUP_PORT=8888
+  JUP_IPNAME=localhost
+  export JUP_PORT JUP_IPNAME
+
+%help
+
+    Container with python_env and Jupyter Notebook 5.6.0 for Ubuntu 20.04 (focal).
+    This installation is based on Python 3
+
+%setup
+
+%labels
+
+   AUTHOR pdarveau@uottawa.ca
+
+%environment
+TZ=America/Toronto
+DEBIAN_FRONTEND=noninteractive
+
+
+%post -c /bin/bash
+   export TZ=America/Toronto
+   export DEBIAN_FRONTEND=noninteractive
+    #Installing all dependencies
+    apt-get update && apt-get -y upgrade
+    apt-get -y install python3-venv build-essential python3-dev intel-opencl-icd git-all libgl1
+
+  #Clone Repo
+  python3 -m venv openvino_env
+  source openvino_env/bin/activate
+  git clone --depth=1 https://github.com/openvinotoolkit/openvino_notebooks.git
+  cd openvino_notebooks
+
+  #Install packages
+  python -m pip install --upgrade --no-input pip
+  pip install --no-input wheel setuptools
+  pip install tensorflow>=2.5 --no-cache-dir
+  grep -v "tensorflow" requirements.txt > tmpfile && mv tmpfile requirements.txt
+  pip install --no-input -r requirements.txt
+
+%startscript
+
+ 
+
+%runscript
+#!/bin/bash
+source /openvino_env/bin/activate
